@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} {% block contenido %}
+<main class="contenedor">
+  <h1>¿Quiénes somos?</h1>
+
+  <div class="nosotros">
+    <div class="nosotros__contenido">
+      <p>
+        Bishudo-Ken nace como solución para todos los fans de las figuras o
+        estatuas de sus personajes favoritos, nosotros les traemos una gran
+        variedad de personajes para poder satisfacer a un gran número de
+        personas
+      </p>
+    </div>
+    <div class="row miembros">
+      <div class="col-6">
+        <img
+          class="nosotros__img"
+          src="{% static 'img/Benja.jpg' %}"
+          alt="Benjamín"
+        />
+        <h2>Benjamín Cuevas</h2>
+        <p>
+          Fundador <br />
+          Coleccionista entusiasta de figuras anime.
+        </p>
+      </div>
+      <div class="col-6">
+        <img
+          class="nosotros__img"
+          src="{% static 'img/Paolo.jpg' %}"
+          alt="Paolo"
+        />
+        <h2>Paolo Zanotti</h2>
+        <p>
+          Gerente de local <br />
+          Amante de las series de comic y de los anime.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock contenido %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% load static %} {% block contenido %}
+
+<main class="container text-center p-5">
+  <div class="card rounded">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <div class="card-img-container">
+          <img
+            src="{{ producto.imagen.url }}"
+            class="card-img"
+            alt="Foto del producto"
+          />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body detalle_producto">
+          <h1>{{ producto.nombre }}</h1>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <p class="card-text">${{ producto.precio }}</p>
+          <p class="card-text">Stock: {{ producto.stock }}</p>
+
+          <form method="POST" action="{% url 'agregar_carrito' %}">
+            {% csrf_token %}
+            <input type="hidden" name="producto_id" value="{{ producto.id }}" />
+            <div
+              class="form-group col-md-4 offset-4 fs-3 d-flex align-items-center"
+            >
+              <label for="cantidad" class="mr-2">Cantidad:</label>
+              <input
+                type="number"
+                class="form-control fs-4"
+                id="cantidad"
+                name="cantidad"
+                min="1"
+                max="{{ producto.stock }}"
+                required
+              />
+            </div>
+            <br />
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary fs-4 ml-2">
+              Agregar al carrito
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock contenido %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block contenido %}
+
+<div class="container">
+  <h1>Factura de Ventas</h1>
+
+  {% if ventas %}
+  <table class="table table-bordered table-hover table_ventas">
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio unitario</th>
+      <th>Subtotal</th>
+    </tr>
+    {% for venta in ventas %}
+    <tr>
+      <td>{{ venta.producto.nombre }}</td>
+      <td>{{ venta.cantidad }}</td>
+      <td>${{ venta.producto.precio }}</td>
+      <td>${{ venta.subtotal }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="total_ventas">
+    <p>Total Ventas: ${{ total_ventas }}</p>
+  </div>
+  {% else %}
+  <p>No hay ventas registradas.</p>
+  {% endif %}
+</div>
+<a href="{% url 'productos' %}" class="btn btn-primary">Regresar a Productos</a>
+
+{% endblock contenido %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div
+class="hero-main d-flex flex-column justify-content-center align-items-center"
+>
+<img
+  class="hero-img"
+  src="{% static 'img/hero-samurai.png' %}"
+  alt="Imagen de marca"
+/>
+<h1>Bushido-Ken</h1>
+<h2>El mejor lugar para comprar figuras de tus personajes favoritos</h2>
+</div>
+
+<div class="contacto__titulo">
+  <h2>Gracias por Preferirnos</h2>
+  <h3>No dudes en contactar con nosotros para consultar sobre cualquier producto que desees.</h3>
+</div>
+<div
+  class="container"
+>
+<div class="row">
+
+  <div class="col-12 col-md-6 offset-md-3">
+    <div class="card contacto">
+      <div class="card-body">
+
+        <h1>Contacto</h1>
+        <form method="POST" onsubmit="return validarFormulario()">
+          {% csrf_token %}
+      
+          <div class="form-group">
+              <label for="id_nombre">Nombre</label>
+              <input type="text" class="form-control" id="id_nombre" name="nombre" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="id_apellido">Apellido</label>
+              <input type="text" class="form-control" id="id_apellido" name="apellido" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="id_correo">Correo</label>
+              <input type="email" class="form-control" id="id_correo" name="correo" placeholder="correo@gmail.com" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="id_mensaje">Mensaje</label>
+              <textarea class="form-control" id="id_mensaje" name="mensaje" rows="3" placeholder="Deja tu mensaje" required></textarea>
+          </div>
+      
+          <div class="form-group justify-content-end">
+              <button class="btn btn-danger" type="submit">Enviar</button>
+          </div>
+      </form>
+      
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+</div>
+</div>
+{% endblock %} 

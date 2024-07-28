@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div
+class="hero-main d-flex flex-column justify-content-center align-items-center"
+>
+<img
+  class="hero-img"
+  src="{% static 'img/hero-samurai.png' %}"
+  alt="Imagen de marca"
+/>
+<h1>Bushido-Ken</h1>
+<h2>El mejor lugar para comprar figuras de tus personajes favoritos</h2>
+</div>
+
+<div class="contacto__titulo">
+  <h2>Gracias por Preferirnos</h2>
+  <h3>No dudes en contactar con nosotros para consultar sobre cualquier producto que desees.</h3>
+</div>
+<div
+  class="container"
+>
+<div class="row">
+
+  <div class="col-12 col-md-6 offset-md-3">
+    <div class="card contacto">
+      <div class="card-body">
+
+        <h1>Contacto</h1>
+        <form action = "" method="POST" onsubmit="return validarFormulario()">
+          {% csrf_token %}
+          
+            {{ form }} 
+      
+          <div class="form-group justify-content-end">
+            <button class="btn btn-danger" type="submit">Enviar</button>
+          </div>
+        </form>
+      
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+</div>
+</div>
+{% endblock %} 

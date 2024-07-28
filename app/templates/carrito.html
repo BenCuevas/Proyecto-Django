@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% load static %} {% block contenido %}
+
+<div class="container carrito">
+  <h1>Carrito de compras</h1>
+
+  {% if carrito %}
+  <table class="table table-bordered table-hover table_productos">
+    <tr>
+      <th>Producto</th>
+      <th>Imagen</th>
+      <th>Cantidad</th>
+      <th>Precio unitario</th>
+      <th>Subtotal</th>
+    </tr>
+    {% for item in carrito %}
+    <tr>
+      <td>{{ item.producto.nombre }}</td>
+      <td>
+        <img
+          src="{{ item.imagen.url }}"
+          alt="{{ item.producto.nombre }}"
+          class="producto-imagen"
+        />
+      </td>
+      <td>{{ item.cantidad }}</td>
+      <td>${{ item.producto.precio }}</td>
+      <td>${{ item.subtotal }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="total_carrito d-flex justify-content-between">
+    <p>Total: ${{ total }}</p>
+    {% else %}
+    <p>No hay productos en el carrito.</p>
+    {% endif %}
+  </div>
+
+  <button class="btn btn-danger fs-4">
+    <a href="{% url 'productos' %}">Seguir comprando</a>
+  </button>
+  <button class="btn btn-success fs-4" type="submit" name="pagar">
+    <a href="{% url 'ventas' %}">Pagar</a>
+  </button>
+  {% if carrito %}
+  <button class="btn btn-warning fs-4" type="button" id="vaciar-carrito">
+    <a href="{% url 'vaciar_carrito' %}">Vaciar Carrito</a>
+  </button>
+  {% endif %}
+</div>
+
+{% endblock contenido %}
